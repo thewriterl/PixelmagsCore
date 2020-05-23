@@ -1,0 +1,27 @@
+{
+  "name": "Log",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "evento",
+      "fieldType": "Event",
+      "fieldValues": "DOWNLOAD,VIEW"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200523175306",
+  "entityTableName": "log",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "angularJSSuffix": "magazine"
+}

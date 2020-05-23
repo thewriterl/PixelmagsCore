@@ -47,6 +47,16 @@ public class CacheConfiguration {
             createCache(cm, com.pixelmags.domain.User.class.getName());
             createCache(cm, com.pixelmags.domain.Authority.class.getName());
             createCache(cm, com.pixelmags.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.pixelmags.domain.Magazine.class.getName());
+            createCache(cm, com.pixelmags.domain.SubscriptionPlan.class.getName());
+            createCache(cm, com.pixelmags.domain.Log.class.getName());
+            createCache(cm, com.pixelmags.domain.Purchase.class.getName());
+            createCache(cm, com.pixelmags.domain.Purchase.class.getName() + ".customers");
+            createCache(cm, com.pixelmags.domain.Customer.class.getName());
+            createCache(cm, com.pixelmags.domain.Device.class.getName());
+            createCache(cm, com.pixelmags.domain.Publisher.class.getName());
+            createCache(cm, com.pixelmags.domain.Publisher.class.getName() + ".magazines");
+            createCache(cm, com.pixelmags.domain.Issue.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
