@@ -1,0 +1,81 @@
+<div>
+    <h2 id="page-heading">
+        <span>Magazines</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-magazine-magazine" [routerLink]="['/magazine-magazine/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Magazine
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="magazines?.length === 0">
+        <span>No magazines found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="magazines && magazines.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Codigo Revista</span></th>
+                    <th scope="col" ><span>Preco</span></th>
+                    <th scope="col" ><span>Issue</span></th>
+                    <th scope="col" ><span>Purchase</span></th>
+                    <th scope="col" ><span>Publisher</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let magazine of magazines ;trackBy: trackId">
+                    <td><a [routerLink]="['/magazine-magazine', magazine.id, 'view']">{{ magazine.id }}</a></td>
+                    <td>{{ magazine.codigoRevista }}</td>
+                    <td>{{ magazine.preco }}</td>
+                    <td>
+                        <div *ngIf="magazine.issueId">
+                            <a [routerLink]="['/issue-magazine', magazine.issueId , 'view']" >{{ magazine.issueId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="magazine.purchaseId">
+                            <a [routerLink]="['/purchase-magazine', magazine.purchaseId , 'view']" >{{ magazine.purchaseId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="magazine.publisherId">
+                            <a [routerLink]="['/publisher-magazine', magazine.publisherId , 'view']" >{{ magazine.publisherId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/magazine-magazine', magazine.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/magazine-magazine', magazine.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(magazine)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

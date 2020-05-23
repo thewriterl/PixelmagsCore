@@ -1,0 +1,33 @@
+{
+  "name": "Publisher",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataCadastro",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "magazine",
+      "otherEntityRelationshipName": "publisher",
+      "relationshipName": "magazines"
+    }
+  ],
+  "changelogDate": "20200523175706",
+  "entityTableName": "publisher",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "angularJSSuffix": "magazine"
+}

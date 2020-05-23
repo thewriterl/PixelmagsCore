@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-purchase-magazine-heading">Create or edit a Purchase</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker #dateDp="ngbDatepicker" formControlName="date"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipo">Tipo</label>
+                    <select class="form-control" name="tipo" formControlName="tipo" id="field_tipo">
+                        <option value="SINGLE_ISSUE">SINGLE_ISSUE</option>
+                        <option value="SUBSCRIPTION">SUBSCRIPTION</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_subscription">Subscription</label>
+                    <select class="form-control" id="field_subscription" name="subscription" formControlName="subscriptionId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="subscriptionPlanOption.id" *ngFor="let subscriptionPlanOption of subscriptions; trackBy: trackById">{{ subscriptionPlanOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

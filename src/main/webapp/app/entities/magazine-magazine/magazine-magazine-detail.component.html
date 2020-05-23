@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="magazine">
+            <h2><span>Magazine</span> {{ magazine.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Codigo Revista</span></dt>
+                <dd>
+                    <span>{{ magazine.codigoRevista }}</span>
+                </dd>
+                <dt><span>Preco</span></dt>
+                <dd>
+                    <span>{{ magazine.preco }}</span>
+                </dd>
+                <dt><span>Issue</span></dt>
+                <dd>
+                    <div *ngIf="magazine.issueId">
+                        <a [routerLink]="['/issue-magazine', magazine.issueId, 'view']">{{ magazine.issueId }}</a>
+                    </div>
+                </dd>
+                <dt><span>Purchase</span></dt>
+                <dd>
+                    <div *ngIf="magazine.purchaseId">
+                        <a [routerLink]="['/purchase-magazine', magazine.purchaseId, 'view']">{{ magazine.purchaseId }}</a>
+                    </div>
+                </dd>
+                <dt><span>Publisher</span></dt>
+                <dd>
+                    <div *ngIf="magazine.publisherId">
+                        <a [routerLink]="['/publisher-magazine', magazine.publisherId, 'view']">{{ magazine.publisherId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/magazine-magazine', magazine.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

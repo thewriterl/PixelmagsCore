@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-issue-magazine-heading">Create or edit a Issue</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_edicao">Edicao</label>
+                    <input type="text" class="form-control" name="edicao" id="field_edicao"
+                           formControlName="edicao"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_manchete">Manchete</label>
+                    <input type="text" class="form-control" name="manchete" id="field_manchete"
+                           formControlName="manchete"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dataLancamento">Data Lancamento</label>
+                    <div class="input-group">
+                        <input id="field_dataLancamento" type="text" class="form-control" name="dataLancamento" ngbDatepicker #dataLancamentoDp="ngbDatepicker" formControlName="dataLancamento"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dataLancamentoDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descricao">Descricao</label>
+                    <input type="text" class="form-control" name="descricao" id="field_descricao"
+                           formControlName="descricao"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numeroPaginas">Numero Paginas</label>
+                    <input type="number" class="form-control" name="numeroPaginas" id="field_numeroPaginas"
+                           formControlName="numeroPaginas"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_url">Url</label>
+                    <input type="text" class="form-control" name="url" id="field_url"
+                           formControlName="url"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_coverThumbnail">Cover Thumbnail</label>
+                    <div>
+                        <div *ngIf="editForm.get('coverThumbnail')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('coverThumbnailContentType')!.value, editForm.get('coverThumbnail')!.value)">open</a><br>
+                            <span class="pull-left">{{ editForm.get('coverThumbnailContentType')!.value }}, {{ byteSize(editForm.get('coverThumbnail')!.value) }}</span>
+                            <button type="button" (click)="editForm.patchValue({coverThumbnail: null});editForm.patchValue({coverThumbnailContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_coverThumbnail" (change)="setFileData($event, 'coverThumbnail', false)"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="coverThumbnail" id="field_coverThumbnail"
+                           formControlName="coverThumbnail"/>
+                    <input type="hidden" class="form-control" name="coverThumbnailContentType" id="field_coverThumbnailContentType"
+                           formControlName="coverThumbnailContentType" />
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

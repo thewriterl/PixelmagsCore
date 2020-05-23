@@ -1,0 +1,39 @@
+{
+  "name": "SubscriptionPlan",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "preco",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "periodo",
+      "fieldType": "SubscriptionPeriod",
+      "fieldValues": "DIARIO,SEMANAL,QUINZENAL,MENSAL,ANUAL"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "purchase",
+      "otherEntityRelationshipName": "subscription",
+      "relationshipName": "purchase",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200523175206",
+  "entityTableName": "subscription_plan",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "angularJSSuffix": "magazine"
+}

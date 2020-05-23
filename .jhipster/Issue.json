@@ -1,0 +1,55 @@
+{
+  "name": "Issue",
+  "fields": [
+    {
+      "fieldName": "edicao",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "manchete",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataLancamento",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroPaginas",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "url",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "coverThumbnail",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "magazine",
+      "otherEntityRelationshipName": "issue",
+      "relationshipName": "magazine",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200523175806",
+  "entityTableName": "issue",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "angularJSSuffix": "magazine"
+}

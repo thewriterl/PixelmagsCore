@@ -1,0 +1,49 @@
+{
+  "name": "Purchase",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "tipo",
+      "fieldType": "PurchaseType",
+      "fieldValues": "SINGLE_ISSUE,SUBSCRIPTION"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "subscriptionPlan",
+      "otherEntityRelationshipName": "purchase",
+      "relationshipName": "subscription",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "purchases",
+      "relationshipName": "customer"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "magazine",
+      "otherEntityRelationshipName": "purchase",
+      "relationshipName": "magazine",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200523175406",
+  "entityTableName": "purchase",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "angularJSSuffix": "magazine"
+}

@@ -1,0 +1,38 @@
+{
+  "name": "Device",
+  "fields": [
+    {
+      "fieldName": "fabricante",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modelo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "os",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "device",
+      "relationshipName": "customer",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200523175606",
+  "entityTableName": "device",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "angularJSSuffix": "magazine"
+}

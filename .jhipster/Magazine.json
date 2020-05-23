@@ -1,0 +1,50 @@
+{
+  "name": "Magazine",
+  "fields": [
+    {
+      "fieldName": "codigoRevista",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "preco",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "issue",
+      "otherEntityRelationshipName": "magazine",
+      "relationshipName": "issue",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "purchase",
+      "otherEntityRelationshipName": "magazine",
+      "relationshipName": "purchase",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "publisher",
+      "otherEntityRelationshipName": "magazines",
+      "relationshipName": "publisher",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200523175106",
+  "entityTableName": "magazine",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "angularJSSuffix": "magazine"
+}

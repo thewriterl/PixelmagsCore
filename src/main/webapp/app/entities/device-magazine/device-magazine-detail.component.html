@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="device">
+            <h2><span>Device</span> {{ device.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Fabricante</span></dt>
+                <dd>
+                    <span>{{ device.fabricante }}</span>
+                </dd>
+                <dt><span>Modelo</span></dt>
+                <dd>
+                    <span>{{ device.modelo }}</span>
+                </dd>
+                <dt><span>Os</span></dt>
+                <dd>
+                    <span>{{ device.os }}</span>
+                </dd>
+                <dt><span>Customer</span></dt>
+                <dd>
+                    <div *ngIf="device.customerId">
+                        <a [routerLink]="['/customer-magazine', device.customerId, 'view']">{{ device.customerId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/device-magazine', device.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="log">
+            <h2><span>Log</span> {{ log.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Date</span></dt>
+                <dd>
+                    <span>{{ log.date }}</span>
+                </dd>
+                <dt><span>Evento</span></dt>
+                <dd>
+                    <span>{{ log.evento }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/log-magazine', log.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

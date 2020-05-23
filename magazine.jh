@@ -1,0 +1,96 @@
+
+
+entity Magazine {
+	codigoRevista String
+    preco BigDecimal
+}
+
+entity SubscriptionPlan {
+	nome String
+    preco BigDecimal
+    periodo SubscriptionPeriod
+}
+
+enum SubscriptionPeriod {
+	DIARIO,
+    SEMANAL,
+    QUINZENAL,
+    MENSAL,
+    ANUAL
+}
+
+
+
+entity Log {
+	date LocalDate
+    evento Event
+}
+
+entity Purchase {
+	date LocalDate
+    tipo PurchaseType
+}
+
+enum PurchaseType {
+	SINGLE_ISSUE,
+    SUBSCRIPTION
+}
+
+enum Event {
+	DOWNLOAD,
+    VIEW
+}
+
+entity Customer {
+	name String
+    email String
+    fcm String
+}
+
+entity Device {
+	fabricante String
+    modelo String
+    os String
+    
+}
+
+entity Publisher {
+	nome String
+    dataCadastro LocalDate
+}
+
+entity Issue {
+	edicao String
+	manchete String
+    dataLancamento LocalDate 
+    descricao String
+    numeroPaginas Integer
+    url String
+    coverThumbnail Blob
+}
+
+
+relationship OneToMany {
+	Publisher{magazines} to Magazine{publisher}
+    Purchase{customer} to Customer{purchases}
+}
+
+relationship OneToOne {
+	Magazine{issue} to Issue{magazine}
+    Purchase{subscription} to SubscriptionPlan{purchase}
+    Magazine{purchase} to Purchase{magazine}
+}
+
+relationship ManyToOne {
+	Device{customer} to Customer
+}
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+//paginate Job with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set an angular suffix
+angularSuffix * with magazine
